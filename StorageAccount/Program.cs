@@ -17,14 +17,14 @@ namespace StorageAccount
             var fileClient = storageAccount.CreateCloudFileClient();
 
             // Get a reference to the file share we created previously.
-            var share = fileClient.GetShareReference("wolfgangsgreatshare123");
+            var share = fileClient.GetShareReference("YourFileShareName");
 
             if (share.Exists())
             {
                 // Get a reference to the root directory for the share.
                 var rootDir = share.GetRootDirectoryReference();
 
-                var file = rootDir.GetFileReference("filesharefile.txt");
+                var file = rootDir.GetFileReference("FileNameToDownload");
 
                 PrintFileToConsole(file);
 
@@ -44,13 +44,13 @@ namespace StorageAccount
 
         private static void UploadFile(CloudFileShare share, CloudFileDirectory rootDir)
         {
-            var sourceFile = share.GetRootDirectoryReference().GetFileReference("uploadedFromCode.txt");
+            var sourceFile = share.GetRootDirectoryReference().GetFileReference("FileNameToUpload");
             sourceFile.UploadText("This content was uploaded from C#. \n yay!!!");
         }
 
         private static void DownloadFile(CloudFile file)
         {
-            file.DownloadToFile("C:/Users/Wolfgang/Desktop/file.txt", FileMode.CreateNew);
+            file.DownloadToFile("PathAndFileNameOnYourComputer", FileMode.CreateNew);
         }
     }
 }
