@@ -28,7 +28,7 @@ namespace StorageAccount
 
                 PrintFileToConsole(file);
 
-                UploadFile(share, rootDir);
+                UploadFile(share);
 
                 DownloadFile(file);
             }
@@ -42,7 +42,7 @@ namespace StorageAccount
             }
         }
 
-        private static void UploadFile(CloudFileShare share, CloudFileDirectory rootDir)
+        private static void UploadFile(CloudFileShare share)
         {
             var sourceFile = share.GetRootDirectoryReference().GetFileReference("FileNameToUpload");
             sourceFile.UploadText("This content was uploaded from C#. \n yay!!!");
